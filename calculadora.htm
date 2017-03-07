@@ -183,12 +183,38 @@
 
                 // .
                 case 46:
-                    document.getElementsByTagName("button")[18].click();
+                    document.getElementsByTagName("button")[17].click();
+                    break;
+                // , (Por si pulsamos la coma en vez del punto)
+                case 44:
+                    document.getElementsByTagName("button")[17].click();
                     break;
 
-                case 46:
-                    document.getElementsByTagName("button")[18].click();
+                // /
+                case 47:
+                    document.getElementsByTagName("button")[7].click();
                     break;
+                // *
+                case 42:
+                    document.getElementsByTagName("button")[11].click();
+                    break;
+                // -
+                case 45:
+                    document.getElementsByTagName("button")[15].click();
+                    break;
+                // +
+                case 43:
+                    document.getElementsByTagName("button")[19].click();
+                    break;
+                //C
+                case 99: case 67:
+                    document.getElementsByTagName("button")[3].click();
+                    break;
+                //D
+                case 99:
+                    document.getElementsByTagName("button")[3].click();
+                    break;
+
                 default:
                     alert(e.which);
             }
