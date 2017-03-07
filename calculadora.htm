@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora</title>
+    <style>
+        #calculadora{
+            position: relative;
+            width: 250px;
+            border: solid 1px #000;
+            padding: 10px;
+            background-color: #e5e5e5;
+            border-radius: 5px 5px 30px;
+            border:outset;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        #titulo{
+            color:#2B305A;
+            font-family: impact;
+            padding-top:8px;
+            padding-left: 30px;
+        }
+        .botonNegro
+        {
+            background-color: #333;
+            color:#fff;
+        }
+        .botonRojo{
+            background-color: #8E2462;
+            color:#fff;
+        }
+        .botonGris{
+            background-color: #88898b;
+        }
+        #pantalla{
+            width:85%;
+            height: 2em;
+            display: flex;
+
+            border:solid 1px #000;
+            box-shadow: inset 2px 2px 5px rgba(2,0,0,0.5);
+            margin:auto;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: right;
+            font-family: fixedsys, monospace;
+            font-size: 1.5em;
+            background-color: #6D7D01;
+
+
+        }
+        #operador{
+
+
+        }
+        #numero{
+            justify-content: flex-end;
+            width: 100%;
+        }
+        table{
+            margin-top: 10px;
+
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button{
+            border:solid 1px #f00;
+            background-color: #fff;
+            width:50px;
+            height: 50px;
+            border: outset;
+            font-family: impact;
+            font-size: 1.2em;
+        }
+        button:active{
+            border: inset;
+            outline: none;
+        }
+
+        button:focus{
+            outline: none;
+        }
+    </style>
+</head>
+
+
+
+
+<body onload="" onkeypress="tecla(event)">
+    <div id="calculadora">
+        <div id="pantalla"><div id="operador">+</div><div id="numero">125.1</div></div>
+        <div id="titulo">Calculadora06</div>
+        <table>
+            <tr>
+                <td><button onclick="boton(this)" class="botonGris">MC</button></td>
+                <td><button onclick="boton(this)" class="botonGris">MR</button></td>
+                <td><button onclick="boton(this)" class="botonGris">M+</button></td>
+                <td><button onclick="boton(this)" class="botonGris">C</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="boton(this)" class="botonNegro">7</button></td>
+                <td><button onclick="boton(this)" class="botonNegro">8</button></td>
+                <td><button onclick="boton(this)" class="botonNegro">9</button></td>
+                <td><button onclick="boton(this)" class="botonRojo">/</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="boton(this)" class="botonNegro">4</button></td>
+                <td><button onclick="boton(this)" class="botonNegro">5</button></td>
+                <td><button onclick="boton(this)" class="botonNegro">6</button></td>
+                <td><button onclick="boton(this)" class="botonRojo">*</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="boton(this)" class="botonNegro">1</button></td>
+                <td><button onclick="boton(this)" class="botonNegro">2</button></td>
+                <td><button onclick="boton(this)" class="botonNegro">3</button></td>
+                <td><button onclick="boton(this)" class="botonRojo">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="boton(this)" class="botonNegro">0</button></td>
+                <td><button onclick="boton(this)" class="botonNegro">.</button></td>
+                <td><button onclick="boton(this)" class="botonNegro">=</button></td>
+                <td><button onclick="boton(this)" class="botonRojo">+</button></td>
+            </tr>
+        </table>
+    </div>
+
+    Diseño basado en la GameBoy Original
+    <script>
+
+        // Capturamos las teclas pulsadas que asociaremos directamente al evento click de cada boton
+        function tecla(e)
+        {
+            switch (e.which)
+            {
+                // 0
+                case 48:
+                    document.getElementsByTagName("button")[16].click();
+                    break;
+                // 1
+                case 49:
+                    document.getElementsByTagName("button")[12].click();
+                    break;
+                // 2
+                case 50:
+                    document.getElementsByTagName("button")[13].click();
+                    break;
+                // 3
+                case 51:
+                    document.getElementsByTagName("button")[14].click();
+                    break;
+                // 4
+                case 52:
+                    document.getElementsByTagName("button")[8].click();
+                    break;
+                // 5
+                case 53:
+                    document.getElementsByTagName("button")[9].click();
+                    break;
+                // 6
+                case 54:
+                    document.getElementsByTagName("button")[10].click();
+                    break;
+                // 7
+                case 55:
+                    document.getElementsByTagName("button")[4].click();
+                    break;
+                // 8
+                case 56:
+                    document.getElementsByTagName("button")[5].click();
+                    break;
+
+                // 9
+                case 57:
+                    document.getElementsByTagName("button")[6].click();
+                    break;
+                // =
+                case 13:
+                    document.getElementsByTagName("button")[18].click();
+                    break;
+
+                // .
+                case 46:
+                    document.getElementsByTagName("button")[18].click();
+                    break;
+
+                case 46:
+                    document.getElementsByTagName("button")[18].click();
+                    break;
+                default:
+                    alert(e.which);
+            }
+
+        }
+
+
+        function cambiarOperador()
+        {
+            //operador
+        }
+
+
+        function boton(bt)
+        {
+            alert(bt.innerHTML);
+
+
+
+
+            /*
+            switch (bt.innerHTML)
+            {
+                case "+":
+                    cambiarOperador("+");
+            }*/
+        }
+
+
+
+    </script>
+</body>
+</html>
