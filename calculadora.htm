@@ -419,18 +419,21 @@
                 case "-":
                     console.log(aux);
                     calc = parseFloat(aux)-parseFloat(document.getElementById("numero").innerHTML);
+                    pantalla = document.getElementById("numero").innerHTML;
                     document.getElementById("numero").innerHTML=calc;
                     aux = calc;
                     break;
                 case "*":
                     console.log(aux);
                     calc = parseFloat(aux)*parseFloat(document.getElementById("numero").innerHTML);
+                    pantalla = document.getElementById("numero").innerHTML;
                     document.getElementById("numero").innerHTML=calc;
                     aux = calc;
                     break;
                 case "/":
                     console.log(aux);
                     calc = parseFloat(aux)/parseFloat(document.getElementById("numero").innerHTML);
+                    pantalla = document.getElementById("numero").innerHTML;
                     document.getElementById("numero").innerHTML=calc;
                     aux = calc;
                     break;
