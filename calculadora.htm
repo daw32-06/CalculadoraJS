@@ -14,8 +14,7 @@
             background-color: #e5e5e5;
             border-radius: 5px 5px 30px;
             border:outset;
-            margin-right: auto;
-            margin-left: auto;
+
         }
         #titulo{
             color:#2B305A;
@@ -52,13 +51,48 @@
 
 
         }
-        #operador{
 
 
-        }
         #numero{
             justify-content: flex-end;
             width: 100%;
+        }
+        #calchist{
+            display: flex;
+            justify-content: center;
+
+        }
+        #historial{
+            border:solid 1px #ccc;
+            background-color: #E7E9E8;
+            width:200px;
+            margin: 25px;
+            box-shadow: inset 2px 2px 5px rgba(2,0,0,0.5);
+            height: 250px;
+            overflow-y:auto;
+            text-align: right;
+            padding: 10px;
+        }
+
+        #ayuda{
+            display:none;
+            border:solid 1px #ccc;
+            width:500px;
+            position: fixed;
+            background-color: #fff;
+            padding: 20px;
+
+            left: calc(-50vw + 50%);
+            right: calc(-50vw + 50%);
+            margin-left: auto;
+            margin-right: auto;
+            top:100px;
+        }
+
+        .cerrar{
+            font-weight: bold;
+            cursor:display;
+            text-align: center;
         }
         table{
             margin-top: 10px;
@@ -90,45 +124,162 @@
 
 
 <body onload="" onkeypress="tecla(event)">
-    <div id="calculadora">
-        <div id="pantalla"><div id="operador"></div><div id="numero">0</div></div>
-        <div id="titulo">Calculadora06</div>
-        <table>
-            <tr>
-                <td><button onclick="boton(this)" class="botonGris">MC</button></td>
-                <td><button onclick="boton(this)" class="botonGris">MR</button></td>
-                <td><button onclick="boton(this)" class="botonGris">M+</button></td>
-                <td><button onclick="boton(this)" class="botonGris">C</button></td>
-            </tr>
-            <tr>
-                <td><button onclick="boton(this)" class="botonNegro">7</button></td>
-                <td><button onclick="boton(this)" class="botonNegro">8</button></td>
-                <td><button onclick="boton(this)" class="botonNegro">9</button></td>
-                <td><button onclick="boton(this)" class="botonRojo">/</button></td>
-            </tr>
-            <tr>
-                <td><button onclick="boton(this)" class="botonNegro">4</button></td>
-                <td><button onclick="boton(this)" class="botonNegro">5</button></td>
-                <td><button onclick="boton(this)" class="botonNegro">6</button></td>
-                <td><button onclick="boton(this)" class="botonRojo">*</button></td>
-            </tr>
-            <tr>
-                <td><button onclick="boton(this)" class="botonNegro">1</button></td>
-                <td><button onclick="boton(this)" class="botonNegro">2</button></td>
-                <td><button onclick="boton(this)" class="botonNegro">3</button></td>
-                <td><button onclick="boton(this)" class="botonRojo">-</button></td>
-            </tr>
-            <tr>
-                <td><button onclick="boton(this)" class="botonNegro">0</button></td>
-                <td><button onclick="boton(this)" class="botonNegro">.</button></td>
-                <td><button onclick="boton(this)" class="botonNegro">=</button></td>
-                <td><button onclick="boton(this)" class="botonRojo">+</button></td>
-            </tr>
-        </table>
-    </div>
+    <div id="calchist">
+        <div id="calculadora">
+            <div id="pantalla"><div id="operador"></div><div id="numero">0</div></div>
+            <div id="titulo">Calculadora06</div>
+            <table>
+                <tr>
+                    <td><button onclick="boton(this)" class="botonGris">MC</button></td>
+                    <td><button onclick="boton(this)" class="botonGris">MR</button></td>
+                    <td><button onclick="boton(this)" class="botonGris">M+</button></td>
+                    <td><button onclick="boton(this)" class="botonGris">C</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="boton(this)" class="botonNegro">7</button></td>
+                    <td><button onclick="boton(this)" class="botonNegro">8</button></td>
+                    <td><button onclick="boton(this)" class="botonNegro">9</button></td>
+                    <td><button onclick="boton(this)" class="botonRojo">/</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="boton(this)" class="botonNegro">4</button></td>
+                    <td><button onclick="boton(this)" class="botonNegro">5</button></td>
+                    <td><button onclick="boton(this)" class="botonNegro">6</button></td>
+                    <td><button onclick="boton(this)" class="botonRojo">*</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="boton(this)" class="botonNegro">1</button></td>
+                    <td><button onclick="boton(this)" class="botonNegro">2</button></td>
+                    <td><button onclick="boton(this)" class="botonNegro">3</button></td>
+                    <td><button onclick="boton(this)" class="botonRojo">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="boton(this)" class="botonNegro">0</button></td>
+                    <td><button onclick="boton(this)" class="botonNegro">.</button></td>
+                    <td><button onclick="boton(this)" class="botonNegro">=</button></td>
+                    <td><button onclick="boton(this)" class="botonRojo">+</button></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <div id="historial">
 
-    Diseño basado en la GameBoy Original
+
+            </div>
+            <div style="text-align:center;"><input type="checkbox" checked id="guardar">¿Deseas usar el historial?</div>
+        </div>
+
+    </div>
+    <div style="text-align:center;">
+        <p>Diseño basado en la GameBoy Original</p>
+        <p  class="cerrar" onclick="document.getElementById('ayuda').style.display='block'">¿Necesitas ayuda?</p>
+
+        <p>Juan José Rubio Iglesias - DAW32 2017</p>
+    </div>
+    <div id="ayuda">
+
+        <ul>
+            <li>No estan inplementadas de momento las opciones MC M+ ni MR (estas opciones serian para el historial del local storage)</li>
+            <li>Funciona tanto pulsando los botones como el teclado
+                <ul>
+                    <li> <b>C </b>: para borrar </li>
+                    <li> <b>Intro </b>: Hacer calculo </li>
+                </ul>
+            </li>
+
+
+
+        <div class="cerrar" onclick="document.getElementById('ayuda').style.display='none'">Cerrar</div>
+    </div>
+    <!--Script para indexedDB -->
     <script>
+    /******************************************************************/
+    /*                        CODIGO  IndexedDB                       */
+    /******************************************************************/
+
+        window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+        window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+        window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+
+        var db=null;//Solicitud de apertura
+
+
+        if (!window.indexedDB) {
+            window.alert("Su navegador no soporta una versión estable de indexedDB.Tal y como las características no serán validas");
+        }
+        // dejamos abierta nuestra base de datos
+
+
+        var request = window.indexedDB.open("calculadora",4);
+
+        //Si la solicitud ha sido correcta, se crea la bd
+        request.onsuccess=function (e) {
+        db=e.target.result;
+        }
+        request.onerror = function(event) {
+              console.log("Error"+event);
+        };
+
+        //en caso de que sea necesario actualizar la bd, se crea el almacen de objetos
+        //Si existe y se recarga el navegador, no se crea
+        request.onupgradeneeded=function (e) {
+            db=e.target.result;
+            //db.createObjectStore("operaciones",{keyPath:"clave"});
+            db.createObjectStore("operaciones", { autoIncrement : true });
+        }
+
+
+        function agregarOperacion(operador, numero,aux)
+        {
+            var transaccion=db.transaction( ["operaciones"],"readwrite");//Nombre de almacen de objetos, tipo de transacción
+            var almacen=transaccion.objectStore("operaciones");
+            //var agregar = almacen.add({operador: operador, numero: numero });
+            var agregar = almacen.add({operador:operador, numero:numero, aux:aux});
+        }
+
+        elementos = [];
+        function cargarArray()
+        {
+            var transaccion=db.transaction( ["operaciones"],"readonly");
+            var almacen=transaccion.objectStore("operaciones");
+
+            almacen.openCursor().onsuccess = function (e) {
+
+                var result = e.target.result;
+
+                if (result === null) {
+                    return;
+                }
+
+                elementos.push(result.value);
+                result.continue();
+            };
+
+        }
+        // ANTES DE LLAMAR A getAll llamar a cargarArray
+        function getAll()
+        {
+            var historial = document.getElementById("historial");
+            for(i=0;i<elementos.length;i++)
+            {
+                historial.innerHTML = historial.innerHTML + elementos[i].operador+elementos[i].numero+"<hr>"+elementos[i].aux+"<br>";
+                ////console.log(elementos[i].operador+","+elementos[i].numero+","+elementos[i].aux);
+            }
+        }
+
+
+        function borrarDB()
+        {
+            indexedDB.deleteDatabase("calculadora");
+            window.location.reload(true);
+        }
+
+
+
+    /******************************************************************/
+    /*                       CODIGO CALCULADORA                       */
+    /******************************************************************/
+
         aux = 0;
         // Capturamos las teclas pulsadas que asociaremos directamente al evento click de cada boton
         function tecla(e)
@@ -216,9 +367,15 @@
                     document.getElementsByTagName("button")[3].click();
                     break;
 
+                // R
+                case 114 :case 82:
 
+                    // Pasas al click
+                    localStorage.clear();
+                    document.getElementById("")
+                    break;
                 default:
-                    alert(e.which);
+                    console.log(e.which);
             }
 
         }
@@ -231,8 +388,7 @@
         }
         function addNumero(n)
         {
-            //n1 = document.getElementById("numero").innerHTML;
-            //document.getElementById("numero").innerHTML=document.getElementById("numero").innerHTML+n;
+
             if(document.getElementById("numero").innerHTML.length<13)
             {
                 document.getElementById("numero").innerHTML=document.getElementById("numero").innerHTML+n;
@@ -241,18 +397,28 @@
 
         function calcular()
         {
+            var historial = document.getElementById("historial");
+            var operador = document.getElementById("operador");
+            var numero = document.getElementById("numero");
+
+            if(document.getElementById("guardar").checked)
+            {
+                historial.innerHTML = historial.innerHTML + operador.innerHTML+numero.innerHTML+"<hr>";
+
+            }
 
             switch(document.getElementById("operador").innerHTML)
             {
                 case "+":
                     console.log(aux);
                     calc = parseFloat(document.getElementById("numero").innerHTML)+parseFloat(aux);
+                    pantalla = document.getElementById("numero").innerHTML;
                     document.getElementById("numero").innerHTML=calc;
                     aux = calc;
                     break;
                 case "-":
                     console.log(aux);
-                    calc = parseFloat(document.getElementById("numero").innerHTML)-parseFloat(aux);
+                    calc = parseFloat(aux)-parseFloat(document.getElementById("numero").innerHTML);
                     document.getElementById("numero").innerHTML=calc;
                     aux = calc;
                     break;
@@ -269,18 +435,26 @@
                     aux = calc;
                     break;
             }
+            if(document.getElementById("guardar").checked)
+            {
+                historial.innerHTML = historial.innerHTML+aux+"<br>";
+                agregarOperacion(document.getElementById("operador").innerHTML,pantalla.toString(),aux);
+            }
+
+
+
         }
         function clear()
         {
             document.getElementById("numero").innerHTML=0;
         }
 
+
         function boton(bt)
         {
             //alert(bt.innerHTML);
             switch (bt.innerHTML)
             {
-
                 case "+":
                     cambiarOperador("+");
                     aux=document.getElementById("numero").innerHTML;
@@ -314,7 +488,6 @@
                     }
                     break;
 
-
                 case "C":
                     clear();
                     break;
@@ -328,6 +501,7 @@
 
 
     </script>
+
 
 </body>
 </html>
