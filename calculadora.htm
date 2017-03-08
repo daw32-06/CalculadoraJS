@@ -91,7 +91,7 @@
 
 <body onload="" onkeypress="tecla(event)">
     <div id="calculadora">
-        <div id="pantalla"><div id="operador">+</div><div id="numero">125.1</div></div>
+        <div id="pantalla"><div id="operador"></div><div id="numero">0</div></div>
         <div id="titulo">Calculadora06</div>
         <table>
             <tr>
@@ -129,10 +129,11 @@
 
     Diseño basado en la GameBoy Original
     <script>
-
+        aux = 0;
         // Capturamos las teclas pulsadas que asociaremos directamente al evento click de cada boton
         function tecla(e)
         {
+            e.preventDefault();
             switch (e.which)
             {
                 // 0
@@ -215,6 +216,7 @@
                     document.getElementsByTagName("button")[3].click();
                     break;
 
+
                 default:
                     alert(e.which);
             }
@@ -222,29 +224,110 @@
         }
 
 
-        function cambiarOperador()
+        function cambiarOperador(op)
         {
-            //operador
+            aux = document.getElementById("numero").innerHTML;
+            document.getElementById("operador").innerHTML=op;
+        }
+        function addNumero(n)
+        {
+            //n1 = document.getElementById("numero").innerHTML;
+            //document.getElementById("numero").innerHTML=document.getElementById("numero").innerHTML+n;
+            if(document.getElementById("numero").innerHTML.length<13)
+            {
+                document.getElementById("numero").innerHTML=document.getElementById("numero").innerHTML+n;
+            }
         }
 
+        function calcular()
+        {
+
+            switch(document.getElementById("operador").innerHTML)
+            {
+                case "+":
+                    console.log(aux);
+                    calc = parseFloat(document.getElementById("numero").innerHTML)+parseFloat(aux);
+                    document.getElementById("numero").innerHTML=calc;
+                    aux = calc;
+                    break;
+                case "-":
+                    console.log(aux);
+                    calc = parseFloat(document.getElementById("numero").innerHTML)-parseFloat(aux);
+                    document.getElementById("numero").innerHTML=calc;
+                    aux = calc;
+                    break;
+                case "*":
+                    console.log(aux);
+                    calc = parseFloat(aux)*parseFloat(document.getElementById("numero").innerHTML);
+                    document.getElementById("numero").innerHTML=calc;
+                    aux = calc;
+                    break;
+                case "/":
+                    console.log(aux);
+                    calc = parseFloat(aux)/parseFloat(document.getElementById("numero").innerHTML);
+                    document.getElementById("numero").innerHTML=calc;
+                    aux = calc;
+                    break;
+            }
+        }
+        function clear()
+        {
+            document.getElementById("numero").innerHTML=0;
+        }
 
         function boton(bt)
         {
-            alert(bt.innerHTML);
-
-
-
-
-            /*
+            //alert(bt.innerHTML);
             switch (bt.innerHTML)
             {
+
                 case "+":
                     cambiarOperador("+");
-            }*/
+                    aux=document.getElementById("numero").innerHTML;
+                    clear();
+                    break;
+                case "-":
+                    cambiarOperador("-");
+                    aux=document.getElementById("numero").innerHTML;
+                    clear();
+                    break;
+                case "*":
+                    cambiarOperador("*");
+                    aux=document.getElementById("numero").innerHTML;
+                    clear();
+                    break;
+                case "/":
+                    cambiarOperador("/");
+                    aux=document.getElementById("numero").innerHTML;
+                    clear();
+                    break;
+                case "0": case "1": case "2": case "3": case "4": case "5": case "6": case "7": case "8": case "9":
+                    addNumero(bt.innerHTML);
+                    break;
+
+                case ".": case ",":
+                    numero = document.getElementById("numero").innerHTML;
+                    if(!numero.includes(',') && !numero.includes('.'))
+                    {
+                        //alert("decimal");
+                        addNumero(".");
+                    }
+                    break;
+
+
+                case "C":
+                    clear();
+                    break;
+
+                case "=":
+                    calcular();
+                    break;
+            }
         }
 
 
 
     </script>
+
 </body>
 </html>
