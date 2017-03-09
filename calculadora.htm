@@ -130,9 +130,9 @@
             <div id="titulo">Calculadora06</div>
             <table>
                 <tr>
-                    <td><button onclick="boton(this)" class="botonGris">MC</button></td>
-                    <td><button onclick="boton(this)" class="botonGris">MR</button></td>
-                    <td><button onclick="boton(this)" class="botonGris">M+</button></td>
+                    <td><button onclick="boton(this)" class="botonGris">##</button></td>
+                    <td><button onclick="boton(this)" title="Borrar Historial" class="botonGris">R</button></td>
+                    <td><button onclick="boton(this)" title="Cargar historial IndexedDB (Pulsar 2 veces)" class="botonGris">L</button></td>
                     <td><button onclick="boton(this)" class="botonGris">C</button></td>
                 </tr>
                 <tr>
@@ -182,7 +182,9 @@
             <li>No estan inplementadas de momento las opciones MC M+ ni MR (estas opciones serian para el historial del local storage)</li>
             <li>Funciona tanto pulsando los botones como el teclado
                 <ul>
-                    <li> <b>C </b>: para borrar </li>
+                    <li> <b>R </b>: para reiniciar el historial de indexedDB </li>
+                    <li> <b>L </b>: para restaurar el historial de indexedDB (pulsar 2 veces)</li>
+                    <li> <b>C </b>: para borrar lo que hay en pantalla</li>
                     <li> <b>Intro </b>: Hacer calculo </li>
                 </ul>
             </li>
@@ -237,6 +239,7 @@
             var agregar = almacen.add({operador:operador, numero:numero, aux:aux});
         }
 
+
         elementos = [];
         function cargarArray()
         {
@@ -254,11 +257,20 @@
                 elementos.push(result.value);
                 result.continue();
             };
+            //console.log(elementos);
+            return "";
 
         }
+
         // ANTES DE LLAMAR A getAll llamar a cargarArray
+
+
+
+
         function getAll()
         {
+
+
             var historial = document.getElementById("historial");
             for(i=0;i<elementos.length;i++)
             {
@@ -369,10 +381,10 @@
 
                 // R
                 case 114 :case 82:
-
-                    // Pasas al click
-                    localStorage.clear();
-                    document.getElementById("")
+                    document.getElementsByTagName("button")[1].click();
+                    break;
+                case 76: case 108:
+                    document.getElementsByTagName("button")[2].click();
                     break;
                 default:
                     console.log(e.which);
@@ -495,6 +507,15 @@
                     clear();
                     break;
 
+                case "R":
+                    borrarDB();
+                    break;
+                case "L":
+                    //cargarArray();
+                    console.log("load");
+                    cargarArray();
+                    getAll();
+                    break;
                 case "=":
                     calcular();
                     break;
