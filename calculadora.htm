@@ -166,7 +166,9 @@
 
 
             </div>
-            <div style="text-align:center;"><input type="checkbox" checked id="guardar">¿Deseas usar el historial?</div>
+            <!-- Aqui guardamos el estado con localStorage la opcion de Guardar el historial -->
+            <div style="text-align:center;"><input type="checkbox" id="checkGuardar" onchange="if(this.checked){ localStorage.setItem('guardar','checked'); } else { localStorage.setItem('guardar',''); }"  id="guardar">¿Deseas usar el historial?</div>
+            <script>document.getElementById("checkGuardar").checked=localStorage.getItem('guardar');</script>
         </div>
 
     </div>
@@ -179,7 +181,7 @@
     <div id="ayuda">
 
         <ul>
-            <li>No estan inplementadas de momento las opciones MC M+ ni MR (estas opciones serian para el historial del local storage)</li>
+            <li>La aplicacion permite utilizar un historial en pantalla de las operaciones (indexedDB) y guardar la opcion de Usar el historial (localStorage)</li>
             <li>Funciona tanto pulsando los botones como el teclado
                 <ul>
                     <li> <b>R </b>: para reiniciar el historial de indexedDB </li>
@@ -413,7 +415,7 @@
             var operador = document.getElementById("operador");
             var numero = document.getElementById("numero");
 
-            if(document.getElementById("guardar").checked)
+            if(document.getElementById("checkGuardar").checked)
             {
                 historial.innerHTML = historial.innerHTML + operador.innerHTML+numero.innerHTML+"<hr>";
 
@@ -422,35 +424,35 @@
             switch(document.getElementById("operador").innerHTML)
             {
                 case "+":
-                    console.log(aux);
+                    //console.log(aux);
                     calc = parseFloat(document.getElementById("numero").innerHTML)+parseFloat(aux);
                     pantalla = document.getElementById("numero").innerHTML;
                     document.getElementById("numero").innerHTML=calc;
                     aux = calc;
                     break;
                 case "-":
-                    console.log(aux);
+                    //console.log(aux);
                     calc = parseFloat(aux)-parseFloat(document.getElementById("numero").innerHTML);
                     pantalla = document.getElementById("numero").innerHTML;
                     document.getElementById("numero").innerHTML=calc;
                     aux = calc;
                     break;
                 case "*":
-                    console.log(aux);
+                    //console.log(aux);
                     calc = parseFloat(aux)*parseFloat(document.getElementById("numero").innerHTML);
                     pantalla = document.getElementById("numero").innerHTML;
                     document.getElementById("numero").innerHTML=calc;
                     aux = calc;
                     break;
                 case "/":
-                    console.log(aux);
+                    //console.log(aux);
                     calc = parseFloat(aux)/parseFloat(document.getElementById("numero").innerHTML);
                     pantalla = document.getElementById("numero").innerHTML;
                     document.getElementById("numero").innerHTML=calc;
                     aux = calc;
                     break;
             }
-            if(document.getElementById("guardar").checked)
+            if(document.getElementById("checkGuardar").checked)
             {
                 historial.innerHTML = historial.innerHTML+aux+"<br>";
                 agregarOperacion(document.getElementById("operador").innerHTML,pantalla.toString(),aux);
@@ -511,8 +513,7 @@
                     borrarDB();
                     break;
                 case "L":
-                    //cargarArray();
-                    console.log("load");
+
                     cargarArray();
                     getAll();
                     break;
